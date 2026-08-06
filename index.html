@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photonic Monolith</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000000;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Subtle film-grain / digital-noise overlay so the void isn't flat */
+    .grain {
+      position: fixed;
+      inset: 0;
+      opacity: 0.04;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    /* Logo rendered as a solid electric-blue shape via a CSS mask.
+       The source SVG is a single-colour wordmark, so masking guarantees
+       the exact #001ef8 colour at any size. */
+    .logo {
+      position: relative;
+      z-index: 10;
+      background-color: #001ef8;
+      -webkit-mask: url("https://media.base44.com/images/public/6a73dfad3c9b26171013cecf/8a4898817_logo.svg") no-repeat center / contain;
+      mask: url("https://media.base44.com/images/public/6a73dfad3c9b26171013cecf/8a4898817_logo.svg") no-repeat center / contain;
+      /* Keep the wordmark's intrinsic aspect ratio (1675.65 × 228.16) */
+      aspect-ratio: 1675.65 / 228.16;
+      width: 70vw;      /* mobile */
+    }
+
+    @media (min-width: 768px) {
+      .logo { width: 20vw; }  /* desktop */
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="logo" role="img" aria-label="Logo"></div>
+</body>
+</html>
