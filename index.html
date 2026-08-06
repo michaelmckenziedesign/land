@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: #ffffff;
+      background-color: #000000;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -36,18 +36,50 @@
       background-color: #001ef8;
       -webkit-mask: url("https://media.base44.com/images/public/6a73dfad3c9b26171013cecf/8a4898817_logo.svg") no-repeat center / contain;
       mask: url("https://media.base44.com/images/public/6a73dfad3c9b26171013cecf/8a4898817_logo.svg") no-repeat center / contain;
-      /* Keep the wordmark's intrinsic aspect ratio (1675.65 × 228.16) */
       aspect-ratio: 1675.65 / 228.16;
       width: 70vw;      /* mobile */
     }
 
+    /* Instagram icon — 4.9vw on mobile, 2.8vw on desktop */
+    .instagram {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 5vh;
+      z-index: 10;
+      color: #001ef8;
+      display: inline-flex;
+    }
+
+    .instagram svg {
+      width: 4.9vw;
+      height: 4.9vw;
+      stroke-width: 1.5;
+    }
+
     @media (min-width: 768px) {
-      .logo { width: 20vw; }  /* desktop */
+      .logo { width: 20vw; }
+      .instagram svg { width: 2.8vw; height: 2.8vw; }
     }
   </style>
 </head>
 <body>
   <div class="grain"></div>
+
   <div class="logo" role="img" aria-label="Logo"></div>
+
+  <a
+    class="instagram"
+    href__="http://instagram.com/sunburnt.agency"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  </a>
 </body>
 </html>
